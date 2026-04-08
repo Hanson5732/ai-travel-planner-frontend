@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const request = axios.create({
   baseURL: 'http://localhost:8000/api', // 对应我们后端的地址
-  timeout: 10000
+  timeout: 120000
 })
 
 // 请求拦截器：自动携带 Token

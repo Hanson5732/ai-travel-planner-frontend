@@ -54,3 +54,8 @@ export const addActivityAPI = (tripId: string, day: number, userPrompt: string) 
 export const getTripHistoryAPI = () => {
   return request.get('/planner/history')
 }
+
+// 获取单个行程详情（包含具体的日程 schedule 数据）
+export const getTripDetailAPI = (tripId: string) => {
+  return request.get(`/planner/trips/${tripId}`)
+}

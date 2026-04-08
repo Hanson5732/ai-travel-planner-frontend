@@ -90,7 +90,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { usePlannerStore } from '../store/usePlannerStore'
+import { usePlannerStore } from '../stores/planner'
 
 const router = useRouter()
 const plannerStore = usePlannerStore()

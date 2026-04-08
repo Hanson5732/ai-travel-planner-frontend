@@ -134,7 +134,7 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { Refresh, Edit, Plus } from '@element-plus/icons-vue'
-import { usePlannerStore } from '../store/usePlannerStore'
+import { usePlannerStore } from '../stores/planner'
 
 const router = useRouter()
 const plannerStore = usePlannerStore()
@@ -257,6 +257,7 @@ const submitAddActivity = async () => {
 }
 
 .subtitle {
+  margin-top: 30px;
   font-size: 1.2rem;
   color: #909399;
   margin-bottom: 20px;

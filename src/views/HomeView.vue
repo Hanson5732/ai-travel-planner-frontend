@@ -31,9 +31,12 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
+import { ElMessageBox, ElMessage } from 'element-plus'
 import { MagicStick, Setting, Refresh, MapLocation } from '@element-plus/icons-vue'
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 const features = [
   { icon: MagicStick, title: 'AI 智能生成', desc: '基于大模型，秒级生成您的专属行程' },
@@ -43,7 +46,31 @@ const features = [
 ]
 
 const startPlanning = () => {
-  router.push('/planner')
+  if (!authStore.isAuthenticated) {
+    // 调用 Element Plus 的确认消息框
+    ElMessageBox.confirm(
+      '您必须先登录才能使用行程规划功能。是否立即前往登录界面？',
+      '需要登录',
+      {
+        confirmButtonText: '去登录',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true, // 居中显示弹框内容
+      }
+    ).then(() => {
+      // 用户点击了“去登录”
+      router.push('/login')
+    }).catch(() => {
+      // 用户点击了“取消”或关闭了弹窗
+      ElMessage({
+        type: 'info',
+        message: '已取消跳转'
+      })
+    })
+  } else {
+    // 已登录，直接放行
+    router.push('/planner')
+  }
 }
 </script>
 

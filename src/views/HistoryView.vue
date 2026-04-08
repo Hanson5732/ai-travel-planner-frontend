@@ -51,7 +51,7 @@ import { useRouter } from 'vue-router'
 import { Plus, Calendar } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import { getTripHistoryAPI } from '../api/planner'
-import { usePlannerStore } from '../store/usePlannerStore'
+import { usePlannerStore } from '../stores/planner'
 
 const router = useRouter()
 const plannerStore = usePlannerStore()
@@ -101,6 +101,7 @@ const goToPlanner = () => {
 }
 
 .subtitle {
+  margin-top: 30px;
   font-size: 1.1rem;
   color: #909399;
   margin-bottom: 20px;
